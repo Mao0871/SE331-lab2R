@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Event from '@/types/Event'
+import { type Event } from '@/types';
 defineProps<{
   event: Event
 }>()
-
 // const event = ref({
 //   id: 5928101,
 //   category: 'animal welfare',
@@ -18,24 +17,24 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink to="{ name: 'event-detail-view', params: { id: event.id}}">
-    <div class="event-card">
-      <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>
-    </div>
-  </RouterLink>
+  <div class="event-details">
+    <h2>{{ event.category }}</h2>
+    <span>{{ event.organizer }}</span>
+  </div>
 </template>
 
 <style scoped>
-.event-card {
+.event-details {
   padding: 20px;
   width: 250px;
   cursor: pointer;
   border: 1px solid #39495c;
   margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
-
-.event-card:hover {
+.event-details:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
